@@ -1,0 +1,89 @@
+
+% IMPORT SETTINGS
+\documentclass[12pt,a4paper,oneside,openright]{report}
+% \documentclass[12pt]{report}
+\input{include/settings/Settings}
+
+\begin{document} 
+
+% COVER PAGE, TITLE PAGE AND IMPRINT PAGE
+\pagenumbering{roman}			% Roman numbering (starting with i (one)) until first main chapter
+\input{include/frontmatter/Titlepage}
+
+% ABSTRACT
+%\newpage
+\input{include/frontmatter/Abstract}
+\addcontentsline{toc}{chapter}{Abstract} 
+
+% ACKNOWLEDGEMENTS
+%\newpage
+\input{include/frontmatter/Acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements} 
+
+
+% TABLE OF CONTENTS
+\newpage
+\tableofcontents
+
+% OTHER FRONTMATTER
+
+
+% list of abbreviations
+\newpage
+\printglossary[type=\acronymtype,style=alttree,title=List of Acronyms]
+\addcontentsline{toc}{chapter}{List of Acronyms}  
+% List of figures (add to table of contents)
+%\cleardoublepage
+\newpage
+\listoffigures
+\addcontentsline{toc}{chapter}{\listfigurename} 
+% List of tables (add to table of contents)
+%\cleardoublepage
+\newpage
+\listoftables
+\addcontentsline{toc}{chapter}{\listtablename}  
+
+
+% START OF MAIN DOCUMENT
+% \cleardoublepage
+\newpage
+\setcounter{page}{1}
+\pagenumbering{arabic}			% Arabic numbering starting from 1 (one)
+\setlength{\parskip}{0.5em}
+
+% INTRODUCTION
+\input{include/0-Introduction}
+
+% RELATED LITERATURE
+\input{include/1-RelatedLiterature}
+
+% THEORY
+\input{include/2-Theory}
+
+% METHODS
+\input{include/3-Methods}
+
+% RESULTS
+\input{include/4-Results}
+
+% DISCUSSION
+\input{include/5-Discussion}
+
+% REFERENCES / BIBLIOGRAPHY
+%\cleardoublepage
+\addcontentsline{toc}{chapter}{Bibliography}
+\begin{flushleft}
+\footnotesize
+\input{include/backmatter/References}
+\end{flushleft}
+
+% APPENDICES
+\cleardoublepage
+\appendix
+\setcounter{page}{1}
+\pagenumbering{Roman}			% Capitalized roman numbering starting from I (one)
+
+\input{include/backmatter/Appendix_1}
+
+
+\end{document}

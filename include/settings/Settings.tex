@@ -1,0 +1,211 @@
+
+% BASIC SETTINGS
+\usepackage{lipsum}
+\usepackage{moreverb}								% List settings
+\usepackage{textcomp}								% Fonts, symbols etc.
+\usepackage{lmodern}								% Latin modern font
+\usepackage{helvet}									% Enables font switching
+\usepackage[T1]{fontenc}							% Output settings
+\usepackage[english]{babel}							% Language settings
+\usepackage[utf8]{inputenc}							% Input settings
+\usepackage{amsmath}								% Mathematical expressions (American mathematical society)
+\usepackage{amssymb}								% Mathematical symbols (American mathematical society)
+\usepackage{graphicx}								% Figures
+\usepackage{subfig}									% Enables subfigures
+\numberwithin{equation}{chapter}					% Numbering order for equations
+\numberwithin{figure}{chapter}						% Numbering order for figures
+\numberwithin{table}{chapter}						% Numbering order for tables
+\usepackage{listings}								% Enables source code listings
+\usepackage{chemfig}								% Chemical structures
+\usepackage[top=3cm, bottom=3cm,
+			inner=3cm, outer=3cm]{geometry}			% Page margin lengths			
+\usepackage{eso-pic}								% Create cover page background
+\newcommand{\backgroundpic}[3]{
+	\put(#1,#2){
+	\parbox[b][\paperheight]{\paperwidth}{
+	\centering
+	\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{#3}}}}
+\usepackage{float} 									% Enables object position enforcement using [H]
+\usepackage{parskip}								% Enables vertical spaces correctly 
+\usepackage{natbib}
+
+\usepackage{booktabs,makecell}
+
+\setlength{\emergencystretch}{10pt}
+% OPTIONAL SETTINGS (DELETE OR COMMENT TO SUPRESS)
+
+% Disable automatic indentation (equal to using \noindent)
+\setlength{\parindent}{0cm} 
+
+% paragraph spacing
+%\setlength{\parskip}{0.3cm}
+
+
+% Caption settings (aligned left with bold name)
+\usepackage[labelfont=bf, textfont=normal,
+			justification=justified,
+			singlelinecheck=false]{caption} 		
+
+		  	
+% Activate clickable links in table of contents  	
+\usepackage{hyperref}								
+\hypersetup{colorlinks, citecolor=black,
+   		 	filecolor=black, linkcolor=black,
+    		urlcolor=black}
+% \urlstyle{same}
+
+% Define the number of section levels to be included in the t.o.c. and numbered	(3 is default)	
+\setcounter{tocdepth}{5}							
+\setcounter{secnumdepth}{5}	
+
+
+% Chapter title settings
+\usepackage{titlesec}		
+\titleformat{\chapter}[display]
+  {\Huge\bfseries\filcenter}
+  {{\fontsize{50pt}{1em}\vspace{-4.2ex}\selectfont \textnormal{\thechapter}}}{1ex}{}[]
+
+
+% Header and footer settings (Select TWOSIDE or ONESIDE layout below)
+\usepackage{fancyhdr}								
+\pagestyle{fancy}  
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\space#1}{}} 
+
+
+% Select one-sided (1) or two-sided (2) page numbering
+\def\layout{1}	% Choose 1 for one-sided or 2 for two-sided layout
+% Conditional expression based on the layout choice
+\ifnum\layout=2	% Two-sided
+    \fancyhf{}			 						
+	\fancyhead[LE,RO]{\nouppercase{ \leftmark}}
+	\fancyfoot[LE,RO]{\thepage}
+	\fancypagestyle{plain}{			% Redefine the plain page style
+	\fancyhf{}
+	\renewcommand{\headrulewidth}{0pt} 		
+	\fancyfoot[LE,RO]{\thepage}}	
+\else			% One-sided  	
+  	\fancyhf{}					
+	\fancyhead[C]{\nouppercase{ \leftmark}}
+	\fancyfoot[C]{\thepage}
+\fi
+
+
+% Enable To-do notes
+\usepackage[textsize=tiny]{todonotes}   % Include the option "disable" to hide all notes
+\setlength{\marginparwidth}{2.5cm} 
+
+
+% Supress warning from Texmaker about headheight
+\setlength{\headheight}{15pt}		
+
+\usepackage{csquotes}
+\usepackage[super]{nth}
+\usepackage{epigraph}
+
+% for distribution command
+\makeatletter
+\newcommand{\distas}[1]{\mathbin{\overset{#1}{\kern\z@\sim}}}
+\makeatother
+
+\usepackage{bm}
+
+% prevent footnotes from breaking across pages
+\interfootnotelinepenalty=10000
+
+% easy way to highlight things that still need to change
+\newcommand{\red}[1]{{\bf \textcolor{red}{#1}}}
+
+
+
+% math stuff
+\usepackage{mathtools}
+\usepackage{relsize} % for making transpose double superscripts bigger
+\usepackage{bbm} % for indicator function
+\newcommand{\cardi}[1]{\left\lvert#1\right\rvert} % cardinality of set
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} % norm
+\newcommand{\avg}[1]{\left\langle#1\right\rangle} % norm
+\newcommand{\V}{\mathcal{V}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\ital}{\textit}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\newcommand{\bigsum}{\mathlarger{\mathlarger{\mathlarger{\mathlarger{\sum}}}}}
+
+\allowdisplaybreaks % allow for page breaks within aligned equations
+
+\usepackage{hhline} % tables with double horizontal lines
+
+\usepackage{array}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{N}{@{}m{0pt}@{}}
+
+% glossary
+\usepackage{glossaries}
+\renewcommand{\glossarypreamble}{\glsfindwidesttoplevelname[\acronymtype] \setlength{\parskip}{0pt}}
+\renewcommand*\glspostdescription{\dotfill}
+\newglossarystyle{owngloss}{%
+    \setglossarystyle{treegroup}%
+    \renewcommand*{\glossentry}[2]{%
+        \glsentryitem{##1}\textbf{\glstarget{##1}{\glossentryname{##1}}}%
+        \\ \glossentrydesc{##1} \\ \par
+    }%
+}
+\makeglossaries
+
+\newacronym{DNA}{DNA}{Deoxyribonucleic acid}
+\newacronym{RNA}{RNA}{Ribonucleic Acid}
+\newacronym{rRNA}{rRNA}{ribosomal RNA}
+\newacronym{mRNA}{mRNA}{messenger Ribonucleic Acid}
+\newacronym{LASSO}{LASSO}{Least Absolute Shrinkage and Selection Operator}
+\newacronym{WGCNA}{WGCNA}{Weighted Gene Co-expression Network Analysis}
+\newacronym{ChIP-seq}{ChIP-seq}{Chromatin Immunoprecipitation Sequencing}
+\newacronym{RNA-seq}{RNA-seq}{Ribonucleic Acid Sequencing}
+\newacronym{miRNA-seq}{miRNA-seq}{micro Ribonucleic Acid Sequencing}
+\newacronym{PCA}{PCA}{Principal Component Analysis}
+\newacronym{kNN}{kNN}{k-Nearest Neighbors}
+\newacronym{SVM}{SVM}{Support Vector Machine}
+\newacronym{KSC}{KSC}{Kernel Spectral Clustering}
+\newacronym{LS-SVM}{LS-SVM}{Least Squares Support Vector Machine}
+\newacronym{kPCA}{kPCA}{kernel Principal Component Analysis}
+\newacronym{RBF}{RBF}{Radial Basis Function}
+\newacronym{FDR}{FDR}{False Discovery Rate}
+\newacronym{OTU}{OTU}{Operational taxonomic unit}
+\newacronym{HT}{HT}{high-throughput}
+\newacronym{NGS}{NGS}{next generation sequencing}
+\newacronym{WWW}{WWW}{World Wide Web}
+\newacronym{GRNs}{GRNs}{gene regulatory networks}
+\newacronym{PDF}{PDF}{Probability density function}
+\newacronym{CLR}{CLR}{centered log-ratio}
+\newacronym{JEI}{JEI}{Jaccard Edge Index}
+\newacronym{NESH}{NESH}{Neighbor shift}
+\newacronym{CRC}{CRC}{colorectal cancer}
+\newacronym{NASH}{NASH}{non-alcoholic steatohepatitis}
+\newacronym{PAR}{PAR}{Parkinson’s disease}
+\newacronym{UC}{UC}{ulcerative colitis}
+\newacronym{CDI}{CDI}{Clostridium difficile infection}
+\newacronym{PSA}{PSA}{psoriatic arthritis}
+\newacronym{CIRR}{CIRR}{liver cirrhosis}
+\newacronym{H}{H}{healthy}
+\newacronym{EDD}{EDD}{enteric diarrheal disease}
+\newacronym{CD}{CD}{Crohn’s disease}
+\newacronym{ASD}{ASD}{autism spectrum disorder}
+\newacronym{T1D}{T1D}{type I diabetes}
+\newacronym{LIV}{LIV}{liver disease}
+\newacronym{HIV}{HIV}{human immunodeficiency virus}
+\newacronym{IBD}{IBD}{inflammatory bowel disease}
+\newacronym{ART}{ART}{arthritis}
+\newacronym{OB}{OB}{obesity}
+\newacronym{MHE}{MHE}{minimal hepatic encephalopathy}
+\newacronym{RA}{RA}{rheumatoid arthritis}
+\newacronym{nonCDI}{nonCDI}{control patients with diarrhea who tested negative for CDI}
+\newacronym{nonIBD}{nonIBD}{control patients with gastrointestinal symptoms but no intestinal inflammation}
+\newacronym{NCBI}{NCBI}{National Center for Biotechnology Information}
+\newacronym{ENA}{ENA}{European Nucleotide Archive }
+\newacronym{RDP}{RDP}{Ribosomal Database Project}
+\newacronym{CLI}{CLI}{command line interface}
+\newacronym{HMP}{HMP}{Human Microbiome Project}
+\newacronym{FHN}{FHN}{full healthy network}
+\newacronym{FDN}{FDN}{full diseased network}
+\newacronym{OHN}{OHN}{overlapping healthy network}
+\newacronym{ODN}{ODN}{overlapping diseased network}
+\newacronym{D}{D}{diseased}
